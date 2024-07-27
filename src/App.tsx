@@ -10,7 +10,7 @@ import Results from './components/Results';
 const App: React.FC = () => {
   return (
     <Router>
-      <div className='flex flex-col min-h-screen bg-gray-900 text-white'>
+      <div className='flex flex-col min-h-screen bg-black text-white'>
         <Navbar />
         <main className='flex-grow container mx-auto'>
           <Routes>
