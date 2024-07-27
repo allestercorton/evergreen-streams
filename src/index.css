@@ -23,26 +23,23 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 /* START - Reduce the width of the default scrollbar for Webkit browsers */
 ::-webkit-scrollbar {
-  width: 8px; /* Adjust the width to your preference */
+  width: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #7a7a7a; /* Darker color for the scrollbar thumb */
-  border-radius: 10px; /* Optional: rounded corners */
+  background-color: #7a7a7a;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #333; /* Dark background color for the track */
+  background: #333;
 }
 
 html {
-  scrollbar-width: thin; /* Options: auto, thin, or none */
-  scrollbar-color: #7a7a7a #333; /* thumb color and track color */
+  scrollbar-width: thin;
+  scrollbar-color: #7a7a7a #333;
+  scroll-behavior: smooth;
 }
 /* END - Reduce the width of the default scrollbar for Webkit browsers */
