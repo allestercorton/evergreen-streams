@@ -1,18 +1,25 @@
 import React from 'react';
 
 const LiveStream: React.FC = () => {
-  const streams = [
-    { id: 1, name: 'Stream 1', url: 'https://example.com/stream1' },
-    { id: 2, name: 'Stream 2', url: 'https://example.com/stream2' },
-    { id: 3, name: 'Stream 3', url: 'https://example.com/stream3' },
-  ];
+  // const streams = [
+  //   { id: 1, name: 'Stream 1', url: 'https://example.com/stream1' },
+  //   { id: 2, name: 'Stream 2', url: 'https://example.com/stream2' },
+  //   { id: 3, name: 'Stream 3', url: 'https://example.com/stream3' },
+  // ];
 
   return (
-    <div className='container mx-auto p-4'>
-      <h2 className='text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8'>
-        Live Streams
+    <div className='container mx-auto p-4 sm:p-6'>
+      <h2 className='text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-white'>
+        Race Schedule
       </h2>
-      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6'>
+      <div className='bg-gray-700 p-4 sm:p-6 rounded-lg shadow-lg'>
+        <div className='overflow-x-auto'>
+          <h1 className='text-2xl text-center'>
+            Under development. Live Streams Coming soon!
+          </h1>
+        </div>
+      </div>
+      {/* <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6'>
         {streams.map((stream) => (
           <div
             key={stream.id}
@@ -31,7 +38,7 @@ const LiveStream: React.FC = () => {
             </a>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

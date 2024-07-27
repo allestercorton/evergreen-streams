@@ -9,14 +9,20 @@ const Navbar: React.FC = () => {
     window.location.reload();
   };
 
+  const handleLinkClick = () => {
+    if (isOpen) {
+      setIsOpen(false);
+    }
+  };
+
   return (
-    <nav className='bg-gray-800 p-4 fixed w-full z-50 shadow-md'>
+    <nav className='bg-gray-800 px-4 py-1 fixed w-full z-50 shadow-md'>
       <div className='container mx-auto flex items-center justify-between'>
         <button
           onClick={handleLogoClick}
           className='text-xl font-bold text-white focus:outline-none'
         >
-          Formula 1 Live Streaming
+          Formula 1 Livestream
         </button>
         <div className='md:hidden'>
           <button
@@ -40,8 +46,17 @@ const Navbar: React.FC = () => {
                 }`
               }
               end
+              onClick={handleLinkClick}
             >
               Home
+              {/* Display the close icon on active link in mobile view */}
+              <span className={`md:hidden ${isOpen ? '' : 'hidden'}`}>
+                <FaTimes
+                  size={16}
+                  className='inline ml-2 cursor-pointer'
+                  onClick={handleLinkClick}
+                />
+              </span>
             </NavLink>
           </li>
           <li>
@@ -52,8 +67,17 @@ const Navbar: React.FC = () => {
                   isActive ? 'text-yellow-400' : 'hover:text-yellow-400'
                 }`
               }
+              onClick={handleLinkClick}
             >
-              Live Stream
+              Live Streams
+              {/* Display the close icon on active link in mobile view */}
+              <span className={`md:hidden ${isOpen ? '' : 'hidden'}`}>
+                <FaTimes
+                  size={16}
+                  className='inline ml-2 cursor-pointer'
+                  onClick={handleLinkClick}
+                />
+              </span>
             </NavLink>
           </li>
           <li>
@@ -64,8 +88,17 @@ const Navbar: React.FC = () => {
                   isActive ? 'text-yellow-400' : 'hover:text-yellow-400'
                 }`
               }
+              onClick={handleLinkClick}
             >
-              Schedule
+              Schedules
+              {/* Display the close icon on active link in mobile view */}
+              <span className={`md:hidden ${isOpen ? '' : 'hidden'}`}>
+                <FaTimes
+                  size={16}
+                  className='inline ml-2 cursor-pointer'
+                  onClick={handleLinkClick}
+                />
+              </span>
             </NavLink>
           </li>
           <li>
@@ -76,8 +109,17 @@ const Navbar: React.FC = () => {
                   isActive ? 'text-yellow-400' : 'hover:text-yellow-400'
                 }`
               }
+              onClick={handleLinkClick}
             >
               Results
+              {/* Display the close icon on active link in mobile view */}
+              <span className={`md:hidden ${isOpen ? '' : 'hidden'}`}>
+                <FaTimes
+                  size={16}
+                  className='inline ml-2 cursor-pointer'
+                  onClick={handleLinkClick}
+                />
+              </span>
             </NavLink>
           </li>
         </ul>

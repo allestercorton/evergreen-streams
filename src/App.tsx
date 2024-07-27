@@ -12,7 +12,7 @@ const App: React.FC = () => {
     <Router>
       <div className='flex flex-col min-h-screen bg-gray-900 text-white'>
         <Navbar />
-        <main className='flex-grow container mx-auto p-4'>
+        <main className='flex-grow container mx-auto'>
           <Routes>
             <Route path='/' element={<VideoPlayer />} />
             <Route path='/livestream' element={<LiveStream />} />
