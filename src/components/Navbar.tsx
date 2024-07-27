@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
           onClick={handleLogoClick}
           className='text-xl font-bold text-white focus:outline-none'
         >
-          Formula 1 Livestream
+          F1 Livestream
         </button>
         <div className='md:hidden'>
           <button
