@@ -22,6 +22,14 @@ const VideoPlayer: React.FC = () => {
     },
     {
       name: 'Server 4',
+      src: 'https://worldsports4u.shop/online/stream-60.php?autoplay=1',
+    },
+    {
+      name: 'Server 5',
+      src: 'https://stronstream.shop/embed/stream-60.php?autoplay=1',
+    },
+    {
+      name: 'Server Z',
       src: 'https://web.primeradirectacanal.xyz/treat/well06/index.php?autoplay=1',
     },
   ];
@@ -34,7 +42,7 @@ const VideoPlayer: React.FC = () => {
             key={index}
             onClick={() => {
               setCurrentSrc(server.src);
-              setHasError(false); // Reset error state when changing server
+              setHasError(false);
             }}
             className={`mx-2 px-4 py-2 md:py-1 mb-3 md:mb-0 border rounded-md transition-colors duration-300 ease-in-out ${
               currentSrc === server.src
