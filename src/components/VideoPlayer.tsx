@@ -28,7 +28,7 @@ const VideoPlayer: React.FC = () => {
 
   return (
     <div className='container mx-auto py-14 md:py-4 mt-16 max-w-4xl'>
-      <div className='mb-6 md:mb-4 text-center'>
+      <div className='mb-4 text-center'>
         {servers.map((server, index) => (
           <button
             key={index}

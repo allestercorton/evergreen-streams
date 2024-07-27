@@ -16,7 +16,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className='bg-gray-800 px-4 py-1 fixed w-full z-50 shadow-md'>
+    <nav className='bg-gray-800 px-4 py-4 md:py-1 fixed w-full z-50 shadow-md'>
       <div className='container mx-auto flex items-center justify-between'>
         <button
           onClick={handleLogoClick}
