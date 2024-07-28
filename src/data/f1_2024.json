@@ -1,71 +1,36 @@
 [
   {
-    "grand_prix": "Belgian Grand Prix",
-    "location": "Circuit de Spa-Francorchamps, Spa-Francorchamps, Belgium",
-    "date": "July 26-28, 2024",
+    "grand_prix": "Dutch Grand Prix",
+    "location": "Circuit Zandvoort, Zandvoort, Netherlands",
+    "date": "August 23-25, 2024",
     "sessions": {
       "practice1": {
-        "date": "July 26, 2024",
-        "time": "12:30 PM - 1:30 PM"
+        "date": "August 23, 2024",
+        "time": "12:30 PM - 1:30 PM PHT"
       },
       "practice2": {
-        "date": "July 26, 2024",
-        "time": "4:00 PM - 5:00 PM"
+        "date": "August 23, 2024",
+        "time": "4:00 PM - 5:00 PM PHT"
       },
       "practice3": {
-        "date": "July 27, 2024",
-        "time": "12:30 PM - 1:30 PM"
+        "date": "August 24, 2024",
+        "time": "12:30 PM - 1:30 PM PHT"
       },
       "qualifying": {
-        "date": "July 27, 2024",
-        "time": "4:00 PM - 5:00 PM"
+        "date": "August 24, 2024",
+        "time": "4:00 PM - 5:00 PM PHT"
       },
       "race": {
-        "date": "July 28, 2024",
-        "time": "9:00 PM - 11:00 PM",
-        "laps": 44
+        "date": "August 25, 2024",
+        "time": "9:00 PM - 11:00 PM PHT",
+        "laps": 72
       }
     },
     "circuit": {
-      "name": "Circuit de Spa-Francorchamps",
-      "length_km": 7.004,
-      "number_of_laps": 44,
-      "total_distance_km": 308.052,
-      "image_url": "https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Belgium_Circuit"
-    }
-  },
-  {
-    "grand_prix": "Hungarian Grand Prix",
-    "location": "Hungaroring, Budapest, Hungary",
-    "date": "July 19-21, 2024",
-    "sessions": {
-      "practice1": {
-        "date": "July 19, 2024",
-        "time": "12:30 PM - 1:30 PM"
-      },
-      "practice2": {
-        "date": "July 19, 2024",
-        "time": "4:00 PM - 5:00 PM"
-      },
-      "practice3": {
-        "date": "July 20, 2024",
-        "time": "12:30 PM - 1:30 PM"
-      },
-      "qualifying": {
-        "date": "July 20, 2024",
-        "time": "4:00 PM - 5:00 PM"
-      },
-      "race": {
-        "date": "July 21, 2024",
-        "time": "3:00 PM - 5:00 PM",
-        "laps": 70
-      }
-    },
-    "circuit": {
-      "name": "Hungaroring",
-      "length_km": 4.381,
-      "number_of_laps": 70,
-      "total_distance_km": 306.63,
+      "name": "Circuit Zandvoort",
+      "length_km": 4.259,
+      "number_of_laps": 72,
+      "total_distance_km": 306.648,
       "image_url": "https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Netherlands_Circuit"
     }
   }

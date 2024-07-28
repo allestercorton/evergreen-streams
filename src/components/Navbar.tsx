@@ -12,7 +12,7 @@ const Navbar: React.FC = () => {
           onClick={handleLogoClick}
           className='text-xl font-bold text-gray-100 focus:outline-none'
         >
-          Formula 1 Live Streams
+          F1 Live Stream
         </button>
       </div>
     </nav>

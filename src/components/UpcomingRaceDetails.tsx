@@ -17,46 +17,54 @@ const UpcomingRaceDetails: React.FC = () => {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-
   return (
-    <div className='bg-gray-800 p-6 rounded-lg shadow-lg text-center md:text-left'>
-      <h2 className='text-2xl font-bold mb-6'>Upcoming Race</h2>
-      <h3 className='text-xl font-semibold text-yellow-400'>
-        {race.grand_prix}
-      </h3>
-      <p className='text-gray-400'>{race.location}</p>
-      <p className='text-gray-400 mb-4'>{race.date}</p>
-      <div className='mt-4'>
-        <h4 className='text-lg font-semibold mb-3'>Sessions</h4>
-        {sessions.map((session, index) => (
-          <div key={index} className='mb-2'>
-            <p className='text-gray-400 capitalize'>{session.name}</p>
-            <div className='text-gray-300'>
-              <span>
-                {new Date(session.date).toLocaleDateString('en-US', {
-                  month: 'short',
-                  day: 'numeric',
-                })}
-              </span>
-              <span className='ml-2'>{session.time}</span>
-            </div>
-          </div>
-        ))}
+    <div className='text-center md:text-left flex flex-col p-6 space-y-6'>
+      <div>
+        <h2 className='text-3xl font-extrabold mb-4 text-white'>
+          Upcoming Race
+        </h2>
+        <h3 className='text-2xl font-bold text-yellow-400'>
+          {race.grand_prix}
+        </h3>
+        <p className='text-gray-400'>{race.location}</p>
+        <p className='text-gray-400 mb-4'>{race.date}</p>
       </div>
-      <div className='mt-6'>
-        <h4 className='text-lg font-semibold mb-3'>Circuit</h4>
+      <hr className='border-gray-700' />
+      <div>
+        <h4 className='text-xl font-semibold mb-3 text-white'>Sessions</h4>
+        <div className='space-y-2'>
+          {sessions.map((session, index) => (
+            <div key={index} className='mb-2'>
+              <p className='text-gray-400 capitalize'>{session.name}</p>
+              <div className='text-gray-300 mb-5'>
+                <span>
+                  {new Date(session.date).toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                  })}
+                </span>
+                <span className='ml-2'>{session.time}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <hr className='border-gray-700' />
+      <div>
+        <h4 className='text-xl font-semibold mb-3 text-white'>Circuit</h4>
         <p className='text-gray-300'>{race.circuit.name}</p>
         <p className='text-gray-300'>{`Length: ${race.circuit.length_km} km`}</p>
         <p className='text-gray-300'>{`Laps: ${race.circuit.number_of_laps}`}</p>
         <p className='text-gray-300'>{`Total Distance: ${race.circuit.total_distance_km} km`}</p>
         <div
-          className='mt-4 rounded-lg shadow-md p-2 cursor-pointer bg-gray-700'
+          className='mt-4 p-2 cursor-pointer transition duration-300'
           onClick={openModal}
         >
           <img
+            title='Click to View Full Circuit Image'
             src={race.circuit.image_url}
             alt={`${race.circuit.name} Circuit`}
-            className='rounded-lg'
+            className='rounded-lg w-full'
           />
         </div>
       </div>

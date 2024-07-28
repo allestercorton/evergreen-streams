@@ -16,11 +16,11 @@ const CircuitModal: React.FC<ModalProps> = ({
       onClick={onClose}
     >
       <div
-        className='bg-gray-800 p-6 rounded-lg shadow-lg max-w-3xl mx-auto relative'
+        className='bg-gray-800 p-6 shadow-lg max-w-3xl mx-auto relative'
         onClick={(e) => e.stopPropagation()}
       >
         <button
-          className='absolute top-4 right-4 text-gray-100 text-4xl'
+          className='absolute top-4 right-4 text-gray-100 text-2xl'
           onClick={onClose}
         >
           <AiOutlineClose />

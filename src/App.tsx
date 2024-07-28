@@ -8,16 +8,23 @@ import UpcomingRaceDetails from './components/UpcomingRaceDetails';
 const App: React.FC = () => {
   return (
     <Router>
-      <div className='flex flex-col min-h-screen bg-gray-900 text-gray-100'>
+      <div className='flex flex-col min-h-screen bg-gray-900 text-gray-100 font-sans'>
         <Navbar />
-        <main className='flex-grow container mx-auto flex flex-col md:flex-row mt-[3rem] p-4'>
-          <div className='order-2 md:order-1 w-full md:w-1/4 p-4'>
-            <UpcomingRaceDetails />
+        <main className='flex-grow'>
+          <div className='text-center text-cyan-500 mt-[4.8rem]'>
+            <p className='text-lg md:hidden'>
+              Use Brave browser for a better experience.
+            </p>
           </div>
-          <div className='order-1 md:order-2 w-full md:w-3/4 p-4'>
-            <Routes>
-              <Route path='/' element={<VideoPlayer />} />
-            </Routes>
+          <div className='container mx-auto flex flex-col md:flex-row gap-6 px-4 py-6'>
+            <div className='order-2 md:order-1 w-full md:w-1/3 lg:w-1/4 md:mt-[-2rem]'>
+              <UpcomingRaceDetails />
+            </div>
+            <div className='order-1 md:order-2 w-full md:w-2/3 lg:w-3/4'>
+              <Routes>
+                <Route path='/' element={<VideoPlayer />} />
+              </Routes>
+            </div>
           </div>
         </main>
         <Footer />

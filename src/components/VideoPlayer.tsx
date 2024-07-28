@@ -9,11 +9,8 @@ const VideoPlayer: React.FC = () => {
   const title = 'Formula 1 Live Stream';
 
   return (
-    <div className='rounded-lg flex flex-col md:flex-col-reverse shadow-md bg-gray-800 p-4'>
-      <div
-        className='relative w-full md:w-auto mb-4 md:mb-0'
-        style={{ paddingBottom: '56.25%' }}
-      >
+    <div className='bg-gray-800 shadow-md rounded-lg flex flex-col md:flex-col-reverse'>
+      <div className='relative w-full' style={{ paddingBottom: '56.25%' }}>
         {hasError ? (
           <div className='absolute top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 text-white'>
             <p>Sorry, the video stream is currently unavailable.</p>
@@ -30,7 +27,7 @@ const VideoPlayer: React.FC = () => {
           ></iframe>
         )}
       </div>
-      <div className='container mx-auto flex flex-wrap justify-center'>
+      <div className='container mx-auto flex flex-wrap justify-evenly md:justify-center items-center gap-4 p-4'>
         {streams.map((server: Stream, index: number) => (
           <ServerButton
             key={index}
