@@ -10,19 +10,10 @@ const VideoPlayer: React.FC = () => {
 
   return (
     <div className='rounded-lg shadow-md bg-gray-800 p-4'>
-      <div className='mb-4 text-center'>
-        {streams.map((server: Stream, index: number) => (
-          <ServerButton
-            key={index}
-            name={server.name}
-            src={server.src}
-            currentSrc={currentSrc}
-            setCurrentSrc={setCurrentSrc}
-            setHasError={setHasError}
-          />
-        ))}
-      </div>
-      <div className='relative w-full' style={{ paddingBottom: '56.25%' }}>
+      <div
+        className='relative w-full md:w-auto mb-4 md:mb-0'
+        style={{ paddingBottom: '56.25%' }}
+      >
         {hasError ? (
           <div className='absolute top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 text-white'>
             <p>Sorry, the video stream is currently unavailable.</p>
@@ -38,6 +29,18 @@ const VideoPlayer: React.FC = () => {
             onError={() => setHasError(true)}
           ></iframe>
         )}
+      </div>
+      <div className='container mx-auto flex flex-wrap justify-center'>
+        {streams.map((server: Stream, index: number) => (
+          <ServerButton
+            key={index}
+            name={server.name}
+            src={server.src}
+            currentSrc={currentSrc}
+            setCurrentSrc={setCurrentSrc}
+            setHasError={setHasError}
+          />
+        ))}
       </div>
     </div>
   );

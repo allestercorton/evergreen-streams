@@ -14,7 +14,7 @@ const ServerButton: React.FC<ServerButtonProps> = ({
         setCurrentSrc(src);
         setHasError(false);
       }}
-      className={`mx-2 px-4 py-2 md:py-1 mb-3 md:mb-0 border rounded-md transition-colors duration-300 ease-in-out ${
+      className={`mx-2 mt-1 px-4 py-2 mb-3 border rounded-md transition-colors duration-300 ease-in-out ${
         currentSrc === src
           ? 'bg-blue-600 text-white border-blue-700'
           : 'bg-gray-700 text-gray-300 border-gray-600 hover:bg-gray-600'
