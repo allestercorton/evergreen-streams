@@ -9,7 +9,7 @@ const VideoPlayer: React.FC = () => {
   const title = 'Formula 1 Live Stream';
 
   return (
-    <div className='rounded-lg shadow-md bg-gray-800 p-4'>
+    <div className='rounded-lg flex flex-col md:flex-col-reverse shadow-md bg-gray-800 p-4'>
       <div
         className='relative w-full md:w-auto mb-4 md:mb-0'
         style={{ paddingBottom: '56.25%' }}
