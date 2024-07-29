@@ -1,0 +1,70 @@
+[
+  {
+    "grand_prix": "Dutch Grand Prix",
+    "location": "Circuit Zandvoort, Zandvoort, Netherlands",
+    "sessions": {
+      "race": {
+        "date": "2024-08-25",
+        "time": "21:00"
+      },
+      "qualifying": {
+        "date": "2024-08-24",
+        "time": "21:00"
+      },
+      "practice3": {
+        "date": "2024-08-24",
+        "time": "17:30"
+      },
+      "practice2": {
+        "date": "2024-08-23",
+        "time": "22:00"
+      },
+      "practice1": {
+        "date": "2024-08-23",
+        "time": "18:30"
+      }
+    },
+    "circuit": {
+      "name": "Circuit Zandvoort",
+      "length_km": "4.259 km",
+      "number_of_laps": 72,
+      "total_distance_km": "306.648 km",
+      "lap_record": "1:11.097 Lewis Hamilton (2021)",
+      "image_url": "https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Netherlands_Circuit"
+    }
+  },
+  {
+    "grand_prix": "Italian Grand Prix",
+    "location": "Autodromo Nazionale Monza, Monza, Italy",
+    "sessions": {
+      "race": {
+        "date": "2024-09-01",
+        "time": "21:00"
+      },
+      "qualifying": {
+        "date": "2024-08-31",
+        "time": "22:00"
+      },
+      "practice3": {
+        "date": "2024-08-31",
+        "time": "18:30"
+      },
+      "practice2": {
+        "date": "2024-08-30",
+        "time": "23:00"
+      },
+      "practice1": {
+        "date": "2024-08-30",
+        "time": "19:30"
+      }
+    },
+    "circuit": {
+      "name": "Autodromo Nazionale Monza",
+      "length_km": "5.793 km",
+      "number_of_laps": 53,
+      "total_distance_km": "306.72 km",
+      "lap_record": "1:21.046Rubens Barrichello (2004)",
+      "image_url": "https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Italy_Circuit"
+    }
+  }
+]

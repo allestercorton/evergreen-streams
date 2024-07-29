@@ -25,18 +25,22 @@ export interface Session {
 
 export interface Circuit {
   name: string;
-  length_km: number;
+  length_km: string;
   number_of_laps: number;
-  total_distance_km: number;
+  total_distance_km: string;
+  lap_record: string;
   image_url: string;
 }
 
-export interface Race {
+export interface RaceData {
   grand_prix: string;
   location: string;
-  date: string;
   sessions: {
-    [key: string]: Session;
+    race: Session;
+    qualifying: Session;
+    practice3: Session;
+    practice2: Session;
+    practice1: Session;
   };
   circuit: Circuit;
 }

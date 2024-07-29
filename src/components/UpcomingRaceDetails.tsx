@@ -1,81 +1,118 @@
 import React, { useState } from 'react';
-import upcomingRace from '../data/f1_2024.json';
-import { Race } from '../types';
+import schedule from '../data/2024_f1_schedules.json';
 import CircuitModal from './CircuitModal';
+import { RaceData } from '../types';
 
 const UpcomingRaceDetails: React.FC = () => {
-  const race: Race = upcomingRace[0];
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const sessions = [
-    { name: 'race', ...race.sessions.race },
-    { name: 'qualifying', ...race.sessions.qualifying },
-    { name: 'practice3', ...race.sessions.practice3 },
-    { name: 'practice2', ...race.sessions.practice2 },
-    { name: 'practice1', ...race.sessions.practice1 },
-  ];
+  const currentDate = new Date();
+
+  const parseTime = (date: string, time: string): Date => {
+    const [hour, minute] = time.split(':').map(Number);
+    const result = new Date(
+      `${date}T${hour.toString().padStart(2, '0')}:${minute
+        .toString()
+        .padStart(2, '0')}:00Z`
+    );
+    result.setHours(result.getHours() + 8);
+    return result;
+  };
+
+  const nearestRace = schedule.reduce(
+    (nearest: RaceData | null, race: RaceData) => {
+      const raceDate = race.sessions.race.date;
+      const raceTime = race.sessions.race.time;
+
+      const raceStartDateTime = parseTime(raceDate, raceTime);
+
+      if (
+        raceStartDateTime > currentDate &&
+        (!nearest ||
+          raceStartDateTime <
+            parseTime(nearest.sessions.race.date, nearest.sessions.race.time))
+      ) {
+        return race;
+      }
+
+      return nearest;
+    },
+    null
+  );
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
   return (
     <div className='text-center md:text-left flex flex-col p-6 space-y-6'>
-      <div>
-        <h2 className='text-3xl font-extrabold mb-4 text-white'>
-          Upcoming Race
-        </h2>
-        <h3 className='text-2xl font-bold text-yellow-400'>
-          {race.grand_prix}
-        </h3>
-        <p className='text-gray-400'>{race.location}</p>
-        <p className='text-gray-400 mb-4'>{race.date}</p>
-      </div>
-      <hr className='border-gray-700' />
-      <div>
-        <h4 className='text-xl font-semibold mb-3 text-white'>Sessions</h4>
-        <div className='space-y-2'>
-          {sessions.map((session, index) => (
-            <div key={index} className='mb-2'>
-              <p className='text-gray-400 capitalize'>{session.name}</p>
-              <div className='text-gray-300 mb-5'>
-                <span>
-                  {new Date(session.date).toLocaleDateString('en-US', {
-                    month: 'short',
-                    day: 'numeric',
-                  })}
-                </span>
-                <span className='ml-2'>{session.time}</span>
-              </div>
+      {nearestRace ? (
+        <>
+          <div>
+            <h2 className='text-3xl font-extrabold mb-4 text-white'>
+              Upcoming Race
+            </h2>
+            <h3 className='text-2xl font-bold text-yellow-400'>
+              {nearestRace.grand_prix}
+            </h3>
+            <p className='text-gray-400 mb-4'>{nearestRace.location}</p>
+          </div>
+          <hr className='border-gray-700' />
+          <div>
+            <h4 className='text-xl font-semibold mb-3 text-white'>Sessions</h4>
+            <div className='space-y-2'>
+              {Object.entries(nearestRace.sessions).map(
+                ([sessionName, sessionData]) => (
+                  <div key={sessionName} className='mb-2'>
+                    <p className='text-gray-400 capitalize'>{sessionName}</p>
+                    <div className='text-gray-300 mb-5'>
+                      <span>
+                        {new Date(
+                          `${sessionData.date}T${sessionData.time}`
+                        ).toLocaleDateString('en-US', {
+                          month: 'short',
+                          day: 'numeric',
+                        })}
+                      </span>
+                      <span className='ml-2'>{sessionData.time}</span>
+                    </div>
+                  </div>
+                )
+              )}
             </div>
-          ))}
-        </div>
-      </div>
-      <hr className='border-gray-700' />
-      <div>
-        <h4 className='text-xl font-semibold mb-3 text-white'>Circuit</h4>
-        <p className='text-gray-300'>{race.circuit.name}</p>
-        <p className='text-gray-300'>{`Length: ${race.circuit.length_km} km`}</p>
-        <p className='text-gray-300'>{`Laps: ${race.circuit.number_of_laps}`}</p>
-        <p className='text-gray-300'>{`Total Distance: ${race.circuit.total_distance_km} km`}</p>
-        <div
-          className='mt-4 p-2 cursor-pointer transition duration-300 transform hover:scale-105'
-          onClick={openModal}
-        >
-          <img
-            title='Click to View Full Circuit Image'
-            src={race.circuit.image_url}
-            alt={`${race.circuit.name} Circuit`}
-            className='rounded-lg w-full'
-          />
-        </div>
-      </div>
+          </div>
+          <hr className='border-gray-700' />
+          <div>
+            <h4 className='text-xl font-semibold mb-3 text-white'>Circuit</h4>
+            <p className='text-gray-300'>{nearestRace.circuit.name}</p>
+            <p className='text-gray-300'>{`Length: ${nearestRace.circuit.length_km}`}</p>
+            <p className='text-gray-300'>{`Laps: ${nearestRace.circuit.number_of_laps}`}</p>
+            <p className='text-gray-300'>{`Total Distance: ${nearestRace.circuit.total_distance_km}`}</p>
+            <p className='text-gray-300'>{`LR: ${nearestRace.circuit.lap_record}`}</p>
+            <div
+              className='mt-4 p-2 cursor-pointer transition duration-300 transform hover:scale-105'
+              onClick={openModal}
+            >
+              <img
+                title='Click to View Full Circuit Image'
+                src={nearestRace.circuit.image_url}
+                alt={`${nearestRace.circuit.name} Circuit`}
+                className='rounded-lg w-full'
+              />
+            </div>
+          </div>
 
-      <CircuitModal
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        imageUrl={race.circuit.image_url}
-        imageAlt={`${race.circuit.name} Circuit`}
-      />
+          <CircuitModal
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            imageUrl={nearestRace.circuit.image_url}
+            imageAlt={`${nearestRace.circuit.name} Circuit`}
+          />
+        </>
+      ) : (
+        <p className='text-gray-400 text-2xl font-bold md:pt-60'>
+          No upcoming races.
+        </p>
+      )}
     </div>
   );
 };
