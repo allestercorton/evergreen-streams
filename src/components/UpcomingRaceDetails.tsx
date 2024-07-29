@@ -57,37 +57,56 @@ const UpcomingRaceDetails: React.FC = () => {
             <p className='text-gray-400 mb-4'>{nearestRace.location}</p>
           </div>
           <hr className='border-gray-700' />
-          <div>
-            <h4 className='text-xl font-semibold mb-3 text-white'>Sessions</h4>
-            <div className='space-y-2'>
+          <div className='mb-6'>
+            <h4 className='text-2xl font-semibold text-white mb-4'>Sessions</h4>
+            <div className='space-y-4'>
               {Object.entries(nearestRace.sessions).map(
-                ([sessionName, sessionData]) => (
-                  <div key={sessionName} className='mb-2'>
-                    <p className='text-gray-400 capitalize'>{sessionName}</p>
-                    <div className='text-gray-300 mb-5'>
-                      <span>
-                        {new Date(
-                          `${sessionData.date}T${sessionData.time}`
-                        ).toLocaleDateString('en-US', {
-                          month: 'short',
-                          day: 'numeric',
-                        })}
-                      </span>
-                      <span className='ml-2'>{sessionData.time}</span>
+                ([sessionName, sessionData]) => {
+                  const date = new Date(
+                    `${sessionData.date}T${sessionData.time}`
+                  );
+                  const formattedDate = date
+                    .toLocaleDateString('en-US', {
+                      month: 'short',
+                      day: 'numeric',
+                    })
+                    .toUpperCase();
+                  const formattedTime = date.toLocaleTimeString('en-US', {
+                    hour: 'numeric',
+                    minute: 'numeric',
+                    hour12: true,
+                  });
+
+                  return (
+                    <div
+                      key={sessionName}
+                      className='flex flex-row justify-between items-center p-4 bg-gray-800 rounded-lg shadow-md'
+                    >
+                      <p className='text-lg font-medium text-gray-300 capitalize mb-2 sm:mb-0'>
+                        {sessionName}
+                      </p>
+                      <div className='text-gray-400 text-right'>
+                        <span className='block text-sm sm:text-base'>
+                          {formattedDate}
+                        </span>
+                        <span className='block text-sm sm:text-base'>
+                          {formattedTime}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                )
+                  );
+                }
               )}
             </div>
           </div>
+
           <hr className='border-gray-700' />
           <div>
             <h4 className='text-xl font-semibold mb-3 text-white'>Circuit</h4>
-            <p className='text-gray-300'>{nearestRace.circuit.name}</p>
-            <p className='text-gray-300'>{`Length: ${nearestRace.circuit.length_km}`}</p>
-            <p className='text-gray-300'>{`Laps: ${nearestRace.circuit.number_of_laps}`}</p>
+            <p className='text-gray-300 mb-2'>{nearestRace.circuit.name}</p>
+            <p className='text-gray-300 mb-2'>{`Length: ${nearestRace.circuit.length_km}`}</p>
+            <p className='text-gray-300 mb-2'>{`Laps: ${nearestRace.circuit.number_of_laps}`}</p>
             <p className='text-gray-300'>{`Total Distance: ${nearestRace.circuit.total_distance_km}`}</p>
-            <p className='text-gray-300'>{`LR: ${nearestRace.circuit.lap_record}`}</p>
             <div
               className='mt-4 p-2 cursor-pointer transition duration-300 transform hover:scale-105'
               onClick={openModal}
@@ -110,7 +129,7 @@ const UpcomingRaceDetails: React.FC = () => {
         </>
       ) : (
         <p className='text-gray-400 text-2xl font-bold md:pt-60'>
-          No upcoming races.
+          No upcoming races. Stay tuned!
         </p>
       )}
     </div>
