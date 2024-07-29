@@ -44,7 +44,7 @@ const UpcomingRaceDetails: React.FC = () => {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <div className='text-center md:text-left flex flex-col p-6 space-y-6'>
+    <div className='text-center md:text-left flex flex-col py-6 space-y-6'>
       {nearestRace ? (
         <>
           <div>
@@ -99,7 +99,6 @@ const UpcomingRaceDetails: React.FC = () => {
               )}
             </div>
           </div>
-
           <hr className='border-gray-700' />
           <div>
             <h4 className='text-xl font-semibold mb-3 text-white'>Circuit</h4>
@@ -119,7 +118,6 @@ const UpcomingRaceDetails: React.FC = () => {
               />
             </div>
           </div>
-
           <CircuitModal
             isOpen={isModalOpen}
             onClose={closeModal}
