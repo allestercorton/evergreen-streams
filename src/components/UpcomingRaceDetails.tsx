@@ -17,6 +17,7 @@ const UpcomingRaceDetails: React.FC = () => {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
   return (
     <div className='text-center md:text-left flex flex-col p-6 space-y-6'>
       <div>
@@ -57,7 +58,7 @@ const UpcomingRaceDetails: React.FC = () => {
         <p className='text-gray-300'>{`Laps: ${race.circuit.number_of_laps}`}</p>
         <p className='text-gray-300'>{`Total Distance: ${race.circuit.total_distance_km} km`}</p>
         <div
-          className='mt-4 p-2 cursor-pointer transition duration-300'
+          className='mt-4 p-2 cursor-pointer transition duration-300 transform hover:scale-105'
           onClick={openModal}
         >
           <img
