@@ -44,11 +44,11 @@ const UpcomingRaceDetails: React.FC = () => {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <div className='text-center md:text-left flex flex-col py-6 space-y-6'>
+    <div className='text-center md:text-left flex flex-col py-6 space-y-6 md:bg-gray-800 md:rounded-lg md:shadow-md md:p-5'>
       {nearestRace ? (
         <>
           <div>
-            <h2 className='text-3xl font-extrabold mb-4 text-white'>
+            <h2 className='text-3xl font-bold md:font-extrabold mb-4 text-white'>
               Upcoming Race
             </h2>
             <h3 className='text-2xl font-bold text-yellow-400'>
@@ -80,7 +80,7 @@ const UpcomingRaceDetails: React.FC = () => {
                   return (
                     <div
                       key={sessionName}
-                      className='flex flex-row justify-between items-center p-4 bg-gray-800 rounded-lg shadow-md'
+                      className='flex flex-row justify-between items-center p-4 md:p-0 bg-gray-800 md:bg-none rounded-lg md:rounded-none shadow-md md:shadow-none'
                     >
                       <p className='text-lg font-medium text-gray-300 capitalize mb-2 sm:mb-0'>
                         {sessionName}
