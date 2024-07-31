@@ -48,20 +48,24 @@ const UpcomingRaceDetails: React.FC = () => {
       {nearestRace ? (
         <>
           <div>
-            <h2 className='text-3xl font-bold md:font-extrabold mb-4 text-white'>
+            <h2 className='text-3xl font-bold md:font-extrabold mb-4 text-teal-300'>
               Upcoming Race
             </h2>
-            <h3 className='text-2xl font-bold text-yellow-400'>
+            <h3 className='text-2xl font-bold text-gray-200'>
               {nearestRace.grand_prix}
             </h3>
             <p className='text-gray-400 mb-4'>{nearestRace.location}</p>
           </div>
           <hr className='border-gray-700' />
           <div className='mb-6'>
-            <h4 className='text-2xl font-semibold text-white mb-4'>Sessions</h4>
+            <h4 className='text-2xl font-semibold text-teal-300 mb-4'>
+              Sessions
+            </h4>
             <div className='space-y-4'>
               {Object.entries(nearestRace.sessions).map(
                 ([sessionName, sessionData]) => {
+                  if (!sessionData) return null;
+
                   const date = new Date(
                     `${sessionData.date}T${sessionData.time}`
                   );
@@ -82,14 +86,14 @@ const UpcomingRaceDetails: React.FC = () => {
                       key={sessionName}
                       className='flex flex-row justify-between items-center p-4 md:p-0 bg-gray-800 md:bg-none rounded-lg md:rounded-none shadow-md md:shadow-none'
                     >
-                      <p className='text-lg font-medium text-gray-300 capitalize mb-2 sm:mb-0'>
+                      <p className='text-lg font-medium text-gray-200 capitalize mb-2 sm:mb-0'>
                         {sessionName}
                       </p>
                       <div className='text-gray-400 text-right'>
-                        <span className='block text-sm sm:text-base'>
+                        <span className='block text-sm sm:text-base text-neutral-400'>
                           {formattedDate}
                         </span>
-                        <span className='block text-sm sm:text-base'>
+                        <span className='block text-sm sm:text-base text-white'>
                           {formattedTime}
                         </span>
                       </div>
@@ -101,11 +105,37 @@ const UpcomingRaceDetails: React.FC = () => {
           </div>
           <hr className='border-gray-700' />
           <div>
-            <h4 className='text-xl font-semibold mb-3 text-white'>Circuit</h4>
-            <p className='text-gray-300 mb-2'>{nearestRace.circuit.name}</p>
-            <p className='text-gray-300 mb-2'>{`Length: ${nearestRace.circuit.length_km}`}</p>
-            <p className='text-gray-300 mb-2'>{`Laps: ${nearestRace.circuit.number_of_laps}`}</p>
-            <p className='text-gray-300'>{`Total Distance: ${nearestRace.circuit.total_distance_km}`}</p>
+            <h4 className='text-xl font-semibold mb-3 text-teal-300'>
+              Circuit
+            </h4>
+            <p className='text-neutral-400 mb-2'>
+              Circuit:{' '}
+              <span className='text-gray-200'>{nearestRace.circuit.name}</span>
+            </p>
+            <p className='text-neutral-400 mb-2'>
+              Length:{' '}
+              <span className='text-gray-200'>
+                {nearestRace.circuit.length_km}
+              </span>
+            </p>
+            <p className='text-neutral-400 mb-2'>
+              Laps:{' '}
+              <span className='text-gray-200'>
+                {nearestRace.circuit.number_of_laps}
+              </span>
+            </p>
+            <p className='text-neutral-400 mb-2'>
+              Total Distance:{' '}
+              <span className='text-gray-200'>
+                {nearestRace.circuit.total_distance_km}
+              </span>
+            </p>
+            <p className='text-neutral-400'>
+              LR:{' '}
+              <span className='text-gray-200'>
+                {nearestRace.circuit.lap_record}
+              </span>
+            </p>
             <div
               className='mt-4 p-2 cursor-pointer transition duration-300 transform hover:scale-105'
               onClick={openModal}

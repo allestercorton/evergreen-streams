@@ -11,7 +11,7 @@ const App: React.FC = () => {
       <div className='flex flex-col min-h-screen bg-gray-900 text-gray-100 font-sans'>
         <Navbar />
         <main className='flex-grow'>
-          <div className='text-center text-cyan-500 mt-[4.8rem] mb-[0.9rem] md:mb-0'>
+          <div className='text-center text-neutral-300 mt-[4.8rem] mb-[0.9rem] md:mb-0'>
             <p className='text-lg md:hidden'>
               Use Brave browser for a better experience.
             </p>

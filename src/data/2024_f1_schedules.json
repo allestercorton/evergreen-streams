@@ -66,5 +66,277 @@
       "lap_record": "1:21.046Rubens Barrichello (2004)",
       "image_url": "https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Italy_Circuit"
     }
+  },
+  {
+    "grand_prix": "Azerbaijan Grand Prix",
+    "location": "Baku City Circuit, Baku, Azerbaijan",
+    "sessions": {
+      "race": {
+        "date": "2024-09-15",
+        "time": "19:00"
+      },
+      "qualifying": {
+        "date": "2024-09-14",
+        "time": "20:00"
+      },
+      "practice3": {
+        "date": "2024-09-14",
+        "time": "16:30"
+      },
+      "practice2": {
+        "date": "2024-09-13",
+        "time": "21:00"
+      },
+      "practice1": {
+        "date": "2024-09-13",
+        "time": "17:30"
+      }
+    },
+    "circuit": {
+      "name": "Baku City Circuit",
+      "length_km": "6.003 km",
+      "number_of_laps": 51,
+      "total_distance_km": "306.049 km",
+      "lap_record": "1:40.495 Charles Leclerc (2019)",
+      "image_url": "https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Baku_Circuit"
+    }
+  },
+  {
+    "grand_prix": "Singapore Grand Prix",
+    "location": "Marina Bay Street Circuit, Singapore",
+    "sessions": {
+      "race": {
+        "date": "2024-09-22",
+        "time": "20:00"
+      },
+      "qualifying": {
+        "date": "2024-09-21",
+        "time": "21:00"
+      },
+      "practice3": {
+        "date": "2024-09-21",
+        "time": "17:30"
+      },
+      "practice2": {
+        "date": "2024-09-20",
+        "time": "21:00"
+      },
+      "practice1": {
+        "date": "2024-09-20",
+        "time": "17:30"
+      }
+    },
+    "circuit": {
+      "name": "Marina Bay Street Circuit",
+      "length_km": "4.94 km",
+      "number_of_laps": 62,
+      "total_distance_km": "306.143 km",
+      "lap_record": "1:35.867 Lewis Hamilton (2023)",
+      "image_url": "https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Singapore_Circuit"
+    }
+  },
+  {
+    "grand_prix": "United States Grand Prix",
+    "location": "Circuit of the Americas, Austin, Texas, USA",
+    "sessions": {
+      "race": {
+        "date": "2024-10-20",
+        "time": "03:00"
+      },
+      "qualifying": {
+        "date": "2024-10-19",
+        "time": "06:00"
+      },
+      "sprint": {
+        "date": "2024-10-19",
+        "time": "02:00"
+      },
+      "sprint_qualifying": {
+        "date": "2024-10-18",
+        "time": "05:30"
+      },
+      "practice1": {
+        "date": "2024-10-18",
+        "time": "01:30"
+      }
+    },
+    "circuit": {
+      "name": "Circuit of the Americas",
+      "length_km": "5.513 km",
+      "number_of_laps": 56,
+      "total_distance_km": "308.405 km",
+      "lap_record": "1:36.169 Charles Leclerc (2019)",
+      "image_url": "https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/USA_Circuit"
+    }
+  },
+  {
+    "grand_prix": "Mexico Grand Prix",
+    "location": "Autódromo Hermanos Rodríguez, Mexico City, Mexico",
+    "sessions": {
+      "race": {
+        "date": "2024-10-27",
+        "time": "04:00"
+      },
+      "qualifying": {
+        "date": "2024-10-26",
+        "time": "05:00"
+      },
+      "practice3": {
+        "date": "2024-10-26",
+        "time": "01:30"
+      },
+      "practice2": {
+        "date": "2024-10-25",
+        "time": "06:00"
+      },
+      "practice1": {
+        "date": "2024-10-25",
+        "time": "02:30"
+      }
+    },
+    "circuit": {
+      "name": "Autódromo Hermanos Rodríguez",
+      "length_km": "4.304 km",
+      "number_of_laps": 71,
+      "total_distance_km": "305.354 km",
+      "lap_record": "1:17.774 Valtteri Bottas (2021)",
+      "image_url": "https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Mexico_Circuit"
+    }
+  },
+  {
+    "grand_prix": "Brazil Grand Prix",
+    "location": "Autódromo José Carlos Pace, São Paulo, Brazil",
+    "sessions": {
+      "race": {
+        "date": "2024-11-03",
+        "time": "01:00"
+      },
+      "qualifying": {
+        "date": "2024-11-02",
+        "time": "02:00"
+      },
+      "sprint": {
+        "date": "2024-11-02",
+        "time": "22:00"
+      },
+      "sprint_qualifying": {
+        "date": "2024-11-01",
+        "time": "02:30"
+      },
+      "practice1": {
+        "date": "2024-11-01",
+        "time": "22:30"
+      }
+    },
+    "circuit": {
+      "name": "Autódromo José Carlos Pace",
+      "length_km": "4.309 km",
+      "number_of_laps": 71,
+      "total_distance_km": "305.879 km",
+      "lap_record": "1:10.540 Valtteri Bottas (2018)",
+      "image_url": "https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Brazil_Circuit"
+    }
+  },
+  {
+    "grand_prix": "Las Vegas Grand Prix",
+    "location": "Las Vegas Street Circuit, Las Vegas, USA",
+    "sessions": {
+      "race": {
+        "date": "2024-11-23",
+        "time": "14:00"
+      },
+      "qualifying": {
+        "date": "2024-11-22",
+        "time": "14:00"
+      },
+      "practice3": {
+        "date": "2024-11-22",
+        "time": "10:30"
+      },
+      "practice2": {
+        "date": "2024-11-21",
+        "time": "14:00"
+      },
+      "practice1": {
+        "date": "2024-11-21",
+        "time": "10:30"
+      }
+    },
+    "circuit": {
+      "name": "Las Vegas Street Circuit",
+      "length_km": "6.120 km",
+      "number_of_laps": 50,
+      "total_distance_km": "309.958 km",
+      "lap_record": "1:35.490 Oscar Piastri (2023)",
+      "image_url": "https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Las_Vegas_Circuit"
+    }
+  },
+  {
+    "grand_prix": "Qatar Grand Prix",
+    "location": "Losail International Circuit, Lusail, Qatar",
+    "sessions": {
+      "race": {
+        "date": "2024-12-01",
+        "time": "00:00"
+      },
+      "qualifying": {
+        "date": "2024-11-30",
+        "time": "01:00"
+      },
+      "sprint": {
+        "date": "2024-11-30",
+        "time": "21:00"
+      },
+      "sprint_qualifying": {
+        "date": "2024-11-29",
+        "time": "01:30"
+      },
+      "practice1": {
+        "date": "2024-11-29",
+        "time": "21:30"
+      }
+    },
+    "circuit": {
+      "name": "Losail International Circuit",
+      "length_km": "5.419 km",
+      "number_of_laps": 57,
+      "total_distance_km": "308.611 km",
+      "lap_record": "1:24.319 Max Verstappen (2023)",
+      "image_url": "https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Qatar_Circuit"
+    }
+  },
+  {
+    "grand_prix": "Abu Dhabi Grand Prix",
+    "location": "Yas Marina Circuit, Abu Dhabi, UAE",
+    "sessions": {
+      "race": {
+        "date": "2024-12-08",
+        "time": "21:00"
+      },
+      "qualifying": {
+        "date": "2024-12-07",
+        "time": "22:00"
+      },
+      "practice3": {
+        "date": "2024-12-07",
+        "time": "18:30"
+      },
+      "practice2": {
+        "date": "2024-12-06",
+        "time": "21:00"
+      },
+      "practice1": {
+        "date": "2024-12-06",
+        "time": "17:30"
+      }
+    },
+    "circuit": {
+      "name": "Yas Marina Circuit",
+      "length_km": "5.281 km",
+      "number_of_laps": 58,
+      "total_distance_km": "306.183 km",
+      "lap_record": "1:26.103 Max Verstappen (2021)",
+      "image_url": "https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Abu_Dhabi_Circuit"
+    }
   }
 ]

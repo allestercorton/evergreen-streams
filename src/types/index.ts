@@ -38,9 +38,11 @@ export interface RaceData {
   sessions: {
     race: Session;
     qualifying: Session;
-    practice3: Session;
-    practice2: Session;
+    practice3?: Session;
+    practice2?: Session;
     practice1: Session;
+    sprint?: Session;
+    sprint_qualifying?: Session;
   };
   circuit: Circuit;
 }
