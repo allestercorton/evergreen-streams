@@ -1,167 +1,215 @@
-import React, { useState } from 'react';
-import schedule from '../data/2024_f1_schedules.json';
-import CircuitModal from './CircuitModal';
-import { RaceData } from '../types';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+// import { CircuitModal } from './CircuitModal';
 
-const UpcomingRaceDetails: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+interface Session {
+  date: string;
+  time: string;
+}
 
-  const currentDate = new Date();
-
-  const parseTime = (date: string, time: string): Date => {
-    const [hour, minute] = time.split(':').map(Number);
-    const result = new Date(
-      `${date}T${hour.toString().padStart(2, '0')}:${minute
-        .toString()
-        .padStart(2, '0')}:00Z`
-    );
-    result.setHours(result.getHours() + 8);
-    return result;
+interface Circuit {
+  circuitId: string;
+  url: string;
+  circuitName: string;
+  Location: {
+    locality: string;
+    country: string;
   };
+}
 
-  const nearestRace = schedule.reduce(
-    (nearest: RaceData | null, race: RaceData) => {
-      const raceDate = race.sessions.race.date;
-      const raceTime = race.sessions.race.time;
+interface Race {
+  season: string;
+  round: string;
+  url: string;
+  raceName: string;
+  Circuit: Circuit;
+  date: string;
+  time: string;
+  FirstPractice: Session;
+  SecondPractice: Session;
+  ThirdPractice?: Session;
+  Qualifying: Session;
+  Sprint?: Session;
+}
 
-      const raceStartDateTime = parseTime(raceDate, raceTime);
+export function UpcomingRaceDetails() {
+  const [nearestRace, setNearestRace] = useState<Race | null>(null);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-      if (
-        raceStartDateTime > currentDate &&
-        (!nearest ||
-          raceStartDateTime <
-            parseTime(nearest.sessions.race.date, nearest.sessions.race.time))
-      ) {
-        return race;
+  useEffect(() => {
+    const fetchRaceData = async () => {
+      try {
+        const response = await axios.get(
+          'http://ergast.com/api/f1/current.json'
+        );
+        const races: Race[] = response.data.MRData.RaceTable.Races;
+        const currentDate = new Date();
+        const upcomingRace = races.find(
+          (race) => new Date(`${race.date}T${race.time}`) > currentDate
+        );
+        setNearestRace(upcomingRace || null);
+        setLoading(false);
+      } catch (err) {
+        setError('Failed to fetch race data');
+        setLoading(false);
       }
+    };
 
-      return nearest;
-    },
-    null
-  );
+    fetchRaceData();
+  }, []);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  // const openModal = () => setIsModalOpen(true);
+  // const closeModal = () => setIsModalOpen(false);
 
-  return (
-    <div className='text-center md:text-left flex flex-col py-6 space-y-6 md:bg-gray-800 md:rounded-lg md:shadow-md md:p-5'>
-      {nearestRace ? (
-        <>
-          <div>
-            <h2 className='text-3xl font-bold md:font-extrabold mb-4 text-teal-300'>
-              Upcoming Race
-            </h2>
-            <h3 className='text-2xl font-bold text-gray-200'>
-              {nearestRace.grand_prix}
-            </h3>
-            <p className='text-gray-400 mb-4'>{nearestRace.location}</p>
-          </div>
-          <hr className='border-gray-700' />
-          <div className='mb-6'>
-            <h4 className='text-2xl font-semibold text-teal-300 mb-4'>
-              Sessions
-            </h4>
-            <div className='space-y-4'>
-              {Object.entries(nearestRace.sessions).map(
-                ([sessionName, sessionData]) => {
-                  if (!sessionData) return null;
+  if (loading) {
+    return (
+      <div className='bg-gray-800 rounded-lg shadow-xl p-6 text-center'>
+        <p className='text-2xl font-bold text-gray-300'>
+          Loading race details...
+        </p>
+      </div>
+    );
+  }
 
-                  const date = new Date(
-                    `${sessionData.date}T${sessionData.time}`
-                  );
-                  const formattedDate = date
-                    .toLocaleDateString('en-US', {
-                      month: 'short',
-                      day: 'numeric',
-                    })
-                    .toUpperCase();
-                  const formattedTime = date.toLocaleTimeString('en-US', {
-                    hour: 'numeric',
-                    minute: 'numeric',
-                    hour12: true,
-                  });
+  if (error) {
+    return (
+      <div className='bg-gray-800 rounded-lg shadow-xl p-6 text-center'>
+        <p className='text-2xl font-bold text-red-500'>{error}</p>
+      </div>
+    );
+  }
 
-                  return (
-                    <div
-                      key={sessionName}
-                      className='flex flex-row justify-between items-center p-4 md:p-0 bg-gray-800 md:bg-none rounded-lg md:rounded-none shadow-md md:shadow-none'
-                    >
-                      <p className='text-lg font-medium text-gray-200 capitalize mb-2 sm:mb-0'>
-                        {sessionName}
-                      </p>
-                      <div className='text-gray-400 text-right'>
-                        <span className='block text-sm sm:text-base text-neutral-400'>
-                          {formattedDate}
-                        </span>
-                        <span className='block text-sm sm:text-base text-white'>
-                          {formattedTime}
-                        </span>
-                      </div>
-                    </div>
-                  );
-                }
-              )}
-            </div>
-          </div>
-          <hr className='border-gray-700' />
-          <div>
-            <h4 className='text-xl font-semibold mb-3 text-teal-300'>
-              Circuit
-            </h4>
-            <p className='text-neutral-400 mb-2'>
-              Circuit:{' '}
-              <span className='text-gray-200'>{nearestRace.circuit.name}</span>
-            </p>
-            <p className='text-neutral-400 mb-2'>
-              Length:{' '}
-              <span className='text-gray-200'>
-                {nearestRace.circuit.length_km}
-              </span>
-            </p>
-            <p className='text-neutral-400 mb-2'>
-              Laps:{' '}
-              <span className='text-gray-200'>
-                {nearestRace.circuit.number_of_laps}
-              </span>
-            </p>
-            <p className='text-neutral-400 mb-2'>
-              Total Distance:{' '}
-              <span className='text-gray-200'>
-                {nearestRace.circuit.total_distance_km}
-              </span>
-            </p>
-            <p className='text-neutral-400'>
-              LR:{' '}
-              <span className='text-gray-200'>
-                {nearestRace.circuit.lap_record}
-              </span>
-            </p>
-            <div
-              className='mt-4 p-2 cursor-pointer transition duration-300 transform hover:scale-105'
-              onClick={openModal}
-            >
-              <img
-                title='Click to View Full Circuit Image'
-                src={nearestRace.circuit.image_url}
-                alt={`${nearestRace.circuit.name} Circuit`}
-                className='rounded-lg w-full'
-              />
-            </div>
-          </div>
-          <CircuitModal
-            isOpen={isModalOpen}
-            onClose={closeModal}
-            imageUrl={nearestRace.circuit.image_url}
-            imageAlt={`${nearestRace.circuit.name} Circuit`}
-          />
-        </>
-      ) : (
-        <p className='text-gray-400 text-2xl font-bold md:pt-60'>
+  if (!nearestRace) {
+    return (
+      <div className='bg-gray-800 rounded-lg shadow-xl p-6 text-center'>
+        <p className='text-2xl font-bold text-gray-300'>
           No upcoming races. Stay tuned!
         </p>
-      )}
+      </div>
+    );
+  }
+
+  const formatDate = (dateString: string, timeString: string) => {
+    const date = new Date(`${dateString}T${timeString}`);
+    return {
+      formattedDate: date
+        .toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+        .toUpperCase(),
+      formattedTime: date.toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true,
+      }),
+    };
+  };
+
+  return (
+    <div className='bg-gray-800 rounded-lg shadow-xl overflow-hidden'>
+      <div className='bg-gray-700 p-6'>
+        <h2 className='text-3xl font-bold text-white mb-2'>
+          {nearestRace.raceName}
+        </h2>
+        <p className='text-xl text-gray-300'>{`${nearestRace.Circuit.Location.locality}, ${nearestRace.Circuit.Location.country}`}</p>
+      </div>
+      <div className='p-6 space-y-6'>
+        <div>
+          <h3 className='text-2xl font-semibold text-white mb-4'>Sessions</h3>
+          <div className='space-y-3'>
+            {Object.entries(nearestRace).map(([key, value]) => {
+              if (
+                key === 'FirstPractice' ||
+                key === 'SecondPractice' ||
+                key === 'ThirdPractice' ||
+                key === 'Qualifying' ||
+                key === 'Sprint'
+              ) {
+                const session = value as Session;
+                const { formattedDate, formattedTime } = formatDate(
+                  session.date,
+                  session.time
+                );
+                return (
+                  <div
+                    key={key}
+                    className='flex justify-between items-center bg-gray-700 rounded-lg p-3'
+                  >
+                    <p className='text-lg font-medium text-white capitalize'>
+                      {key.replace(/([A-Z])/g, ' $1').trim()}
+                    </p>
+                    <div className='text-right'>
+                      <span className='block text-sm text-gray-300'>
+                        {formattedDate}
+                      </span>
+                      <span className='block text-sm font-semibold text-white'>
+                        {formattedTime}
+                      </span>
+                    </div>
+                  </div>
+                );
+              }
+              return null;
+            })}
+            <div className='flex justify-between items-center bg-gray-700 rounded-lg p-3'>
+              <p className='text-lg font-medium text-white capitalize'>Race</p>
+              <div className='text-right'>
+                <span className='block text-sm text-gray-300'>
+                  {formatDate(nearestRace.date, nearestRace.time).formattedDate}
+                </span>
+                <span className='block text-sm font-semibold text-white'>
+                  {formatDate(nearestRace.date, nearestRace.time).formattedTime}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 className='text-2xl font-semibold text-white mb-4'>
+            Circuit Details
+          </h3>
+          <div className='space-y-2 text-gray-300'>
+            <p>
+              Name:{' '}
+              <span className='text-white'>
+                {nearestRace.Circuit.circuitName}
+              </span>
+            </p>
+            <p>
+              Location:{' '}
+              <span className='text-white'>{`${nearestRace.Circuit.Location.locality}, ${nearestRace.Circuit.Location.country}`}</span>
+            </p>
+            <p>
+              More Info:{' '}
+              <a
+                href={nearestRace.Circuit.url}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='text-blue-400 hover:text-blue-300'
+              >
+                Circuit Details
+              </a>
+            </p>
+          </div>
+          {/* <div
+            className='mt-4 cursor-pointer transition duration-300 transform hover:scale-105'
+            onClick={openModal}
+          >
+            <img
+              src={`https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/${nearestRace.Circuit.circuitId}.png.transform/9col/image.png`}
+              alt={`${nearestRace.Circuit.circuitName} Circuit`}
+              className='rounded-lg w-full'
+              title='Click to View Full Circuit Image'
+            />
+          </div> */}
+        </div>
+      </div>
+      {/* <CircuitModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        imageUrl={`https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/${nearestRace.Circuit.circuitId}.png.transform/9col/image.png`}
+        imageAlt={`${nearestRace.Circuit.circuitName} Circuit`}
+      /> */}
     </div>
   );
-};
-
-export default UpcomingRaceDetails;
+}

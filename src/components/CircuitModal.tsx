@@ -1,35 +1,33 @@
-import React from 'react';
-import { AiOutlineClose } from 'react-icons/ai';
-import { ModalProps } from '../types';
+interface CircuitModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  imageUrl: string;
+  imageAlt: string;
+}
 
-const CircuitModal: React.FC<ModalProps> = ({
+export function CircuitModal({
   isOpen,
   onClose,
   imageUrl,
   imageAlt,
-}) => {
+}: CircuitModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div
-      className='fixed -inset-6 bg-black bg-opacity-75 flex items-center justify-center z-50'
-      onClick={onClose}
-      style={{ height: '100vh' }}
-    >
-      <div
-        className='bg-gray-800 p-6 shadow-lg max-w-3xl mx-auto relative'
-        onClick={(e) => e.stopPropagation()}
-      >
+    <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50'>
+      <div className='bg-gray-800 p-4 rounded-lg max-w-3xl w-full'>
+        <img
+          src={imageUrl}
+          alt={imageAlt}
+          className='w-full h-auto rounded-lg'
+        />
         <button
-          className='absolute top-4 right-4 text-gray-100 text-2xl'
           onClick={onClose}
+          className='mt-4 px-4 py-2 bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors duration-300'
         >
-          <AiOutlineClose className='mr-5 md:mr-0' />
+          Close
         </button>
-        <img src={imageUrl} alt={imageAlt} className='rounded-lg' />
       </div>
     </div>
   );
-};
-
-export default CircuitModal;
+}
