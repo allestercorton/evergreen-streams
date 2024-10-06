@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 export function Navbar() {
@@ -11,7 +11,7 @@ export function Navbar() {
     <nav className='bg-gray-800 shadow-lg'>
       <div className='container mx-auto px-4'>
         <div className='flex items-center justify-between h-16'>
-          <NavLink to='/' className='flex items-center space-x-3'>
+          <Link to='/' className='flex items-center space-x-3'>
             <svg
               className='w-8 h-8 text-red-600'
               fill='none'
@@ -33,33 +33,11 @@ export function Navbar() {
               />
             </svg>
             <span className='text-xl font-bold text-white'>F1 Live Stream</span>
-          </NavLink>
-
-          {/* Desktop links */}
+          </Link>
           <div className='hidden md:flex space-x-4'>
-            <NavLink
-              to='/schedule'
-              className={({ isActive }) =>
-                isActive
-                  ? 'text-white font-semibold'
-                  : 'text-gray-300 hover:text-white transition duration-150 ease-in-out'
-              }
-            >
-              Schedule
-            </NavLink>
-            <NavLink
-              to='/standings'
-              className={({ isActive }) =>
-                isActive
-                  ? 'text-white font-semibold'
-                  : 'text-gray-300 hover:text-white transition duration-150 ease-in-out'
-              }
-            >
-              Standings
-            </NavLink>
+            <NavLink to='/schedule'>Schedule</NavLink>
+            <NavLink to='/standings'>Standings</NavLink>
           </div>
-
-          {/* Mobile menu button */}
           <div className='md:hidden'>
             <button
               onClick={toggleMenu}
@@ -70,36 +48,49 @@ export function Navbar() {
           </div>
         </div>
       </div>
-
-      {/* Mobile menu */}
       {isOpen && (
         <div className='md:hidden'>
           <div className='px-2 pt-2 pb-3 space-y-1 sm:px-3'>
-            <NavLink
-              to='/schedule'
-              onClick={toggleMenu}
-              className={({ isActive }) =>
-                isActive
-                  ? 'block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-700'
-                  : 'block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition duration-150 ease-in-out'
-              }
-            >
+            <MobileNavLink to='/schedule' onClick={toggleMenu}>
               Schedule
-            </NavLink>
-            <NavLink
-              to='/standings'
-              onClick={toggleMenu}
-              className={({ isActive }) =>
-                isActive
-                  ? 'block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-700'
-                  : 'block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition duration-150 ease-in-out'
-              }
-            >
+            </MobileNavLink>
+            <MobileNavLink to='/standings' onClick={toggleMenu}>
               Standings
-            </NavLink>
+            </MobileNavLink>
           </div>
         </div>
       )}
     </nav>
+  );
+}
+
+function NavLink({ to, children }: { to: string; children: React.ReactNode }) {
+  return (
+    <Link
+      to={to}
+      className='text-gray-300 hover:text-white transition duration-150 ease-in-out'
+    >
+      {children}
+    </Link>
+  );
+}
+
+function MobileNavLink({
+  to,
+  onClick,
+  children,
+}: {
+  to: string;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link
+      to={to}
+      className='block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition duration-150 ease-in-out'
+      onClick={onClick}
+    >
+      {children}
+    </Link>
   );
 }
