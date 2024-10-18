@@ -140,23 +140,23 @@
     "location": "Circuit of the Americas, Austin, Texas, USA",
     "sessions": {
       "race": {
-        "date": "2024-10-20",
+        "date": "2024-10-21",
         "time": "03:00"
       },
       "qualifying": {
-        "date": "2024-10-19",
+        "date": "2024-10-20",
         "time": "06:00"
       },
       "sprint": {
-        "date": "2024-10-19",
+        "date": "2024-10-20",
         "time": "02:00"
       },
       "sprint_qualifying": {
-        "date": "2024-10-18",
+        "date": "2024-10-19",
         "time": "05:30"
       },
       "practice1": {
-        "date": "2024-10-18",
+        "date": "2024-10-19",
         "time": "01:30"
       }
     },
