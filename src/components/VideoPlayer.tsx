@@ -8,8 +8,13 @@ const VideoPlayer: React.FC = () => {
   const [hasError, setHasError] = useState(false);
   const title = 'Formula 1 Live Stream';
 
+  const handleSrcChange = (src: string) => {
+    setCurrentSrc(src);
+    setHasError(false);
+  };
+
   return (
-    <div className='bg-gray-800 shadow-md rounded-lg flex flex-col md:flex-col-reverse'>
+    <div className='bg-gray-800 shadow-md rounded-t-lg flex flex-col md:flex-col-reverse'>
       <div className='relative w-full' style={{ paddingBottom: '56.25%' }}>
         {hasError ? (
           <div className='absolute top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 text-white'>
@@ -34,7 +39,7 @@ const VideoPlayer: React.FC = () => {
             name={server.name}
             src={server.src}
             currentSrc={currentSrc}
-            setCurrentSrc={setCurrentSrc}
+            setCurrentSrc={handleSrcChange}
             setHasError={setHasError}
           />
         ))}
